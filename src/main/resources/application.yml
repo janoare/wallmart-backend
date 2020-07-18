@@ -1,0 +1,19 @@
+spring:
+  profiles: default
+  data:
+    mongodb:
+      authentication-database: admin
+      username: productListUser
+      password: productListPassword
+      database: promotions
+      port: 27017
+      host: localhost
+      repositories.enabled: true
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
