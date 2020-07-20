@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: productListUser
+      password: productListPassword
+      database: promotions
+      port: ${MONGO_PORT}
+      host: ${MONGO_HOST}
+      repositories.enabled: true

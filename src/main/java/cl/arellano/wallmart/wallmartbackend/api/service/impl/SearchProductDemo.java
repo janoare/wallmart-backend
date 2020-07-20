@@ -9,6 +9,7 @@ import cl.arellano.wallmart.wallmartbackend.api.repository.entity.Products;
 import cl.arellano.wallmart.wallmartbackend.api.service.SearchProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Comparator;
 import java.util.List;
@@ -22,6 +23,7 @@ import static cl.arellano.wallmart.wallmartbackend.api.exception.ErrorCodes.NO_R
 @AllArgsConstructor
 public class SearchProductDemo implements SearchProductService {
 
+    private static final float PALINDROME_DISCOUNT = 0.5f;
     private ProductRepository productRepository;
 
     @Override
@@ -45,6 +47,22 @@ public class SearchProductDemo implements SearchProductService {
                 .sorted(Comparator.comparingInt(Products::getPrice))
                 .collect(Collectors.toList());
 
-        return ProductMapper.INSTANCE.fromEntityListToDomainList(productsByBrandAndDEscription);
+        List<Product> productList = ProductMapper.INSTANCE.fromEntityListToDomainList(productsByBrandAndDEscription);
+
+        if(validatePalindrome(searchCriteria.getCriteria())) {
+            productList.stream().forEach(product -> {
+                product.setDiscountPrice(calculateDiscount(product.getPrice(), PALINDROME_DISCOUNT));
+            });
+        }
+
+        return productList;
+    }
+
+    public boolean validatePalindrome(String searchString) {
+        return searchString.equals(new StringBuilder(searchString).reverse().toString());
+    }
+
+    public Integer calculateDiscount( Integer price, Float discount) {
+        return Math.round(price * discount);
     }
 }

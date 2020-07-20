@@ -1,9 +1,9 @@
-package cl.arellano.wallmart.wallmartbackend.api.service.impl;
+package unit.wallmartbackend.api.service.impl;
 
 import cl.arellano.wallmart.wallmartbackend.api.domain.Product;
-import cl.arellano.wallmart.wallmartbackend.api.domain.SearchCriteria;
 import cl.arellano.wallmart.wallmartbackend.api.repository.ProductRepository;
 import cl.arellano.wallmart.wallmartbackend.api.repository.entity.Products;
+import cl.arellano.wallmart.wallmartbackend.api.service.impl.SearchProductDemo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,5 +1,6 @@
-package cl.arellano.wallmart.wallmartbackend.api.controller;
+package unit.wallmartbackend.api.controller;
 
+import cl.arellano.wallmart.wallmartbackend.api.controller.SearchController;
 import cl.arellano.wallmart.wallmartbackend.api.domain.Product;
 import cl.arellano.wallmart.wallmartbackend.api.dto.ProductDTO;
 import cl.arellano.wallmart.wallmartbackend.api.service.SearchProductService;

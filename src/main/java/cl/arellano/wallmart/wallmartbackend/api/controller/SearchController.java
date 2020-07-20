@@ -1,6 +1,5 @@
 package cl.arellano.wallmart.wallmartbackend.api.controller;
 
-import cl.arellano.wallmart.wallmartbackend.api.domain.SearchCriteria;
 import cl.arellano.wallmart.wallmartbackend.api.dto.SearchCriteriaDTO;
 import cl.arellano.wallmart.wallmartbackend.api.mapper.ProductMapper;
 import cl.arellano.wallmart.wallmartbackend.api.mapper.SearchCriteriaMapper;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/v1/products/search")
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @AllArgsConstructor
 public class SearchController {
 
@@ -24,7 +24,7 @@ public class SearchController {
                 fromDomainToDto(searchProductService.searchById(productId)));
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity searchByBrandAndDescription(@RequestBody SearchCriteriaDTO searchCriteriaDTO) {
         return ResponseEntity.ok(ProductMapper.INSTANCE.fromDomainListToDtoList(
                 searchProductService.searchByBrandAndDescription(
