@@ -20,7 +20,7 @@ $ make build-docker-image
 
 3) Para levantar un contenedor se puede usar el siguiente comando:
 ```sh
-docker run -e "MONGO_HOST=<Host BD mongo>" -e "MONGO_PORT=<Puerto BD mongo>" -e "SPRING_PROFILES_ACTIVE=local" -p  8081:8081 wallmart-backend 
+docker run -e "MONGO_HOST=<Host BD mongo>" -e "MONGO_PORT=<Puerto BD mongo>" -e "SPRING_PROFILES_ACTIVE=local" -p  8080:8080 wallmart-backend 
 ```
 
 
